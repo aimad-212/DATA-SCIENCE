@@ -31,3 +31,25 @@ Shibuya Crossing is one of the busiest intersections in the world.
 """
 
 corpus = [doc1, doc2, doc3, doc4]
+
+# =====================================================
+# 2. TOKENISATION
+# =====================================================
+
+def tokenize_doc(doc):
+    """
+    Convertit le texte en minuscules,
+    supprime la ponctuation et extrait les mots.
+    Les mots composés avec un tiret sont séparés.
+    """
+    return re.findall(r"[a-z]+", doc.lower())
+
+
+# Tokenisation des quatre documents
+tokenized_corpus = [tokenize_doc(doc) for doc in corpus]
+
+for i, tokens in enumerate(tokenized_corpus, start=1):
+    print(f"Doc{i} :", tokens)
+    print("Nombre de tokens :", len(tokens))
+    print()
+
