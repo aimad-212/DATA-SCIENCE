@@ -83,3 +83,13 @@ def one_hot_doc(tokens, vocab):
         dtype=int
     )
 
+
+# =====================================================
+# 6. TERM FREQUENCY (TF)
+# =====================================================
+
+def tf(term, tokens):
+    """
+    TF = nombre d'occurrences du terme dans le document.
+    """
+    return tokens.count(term)
