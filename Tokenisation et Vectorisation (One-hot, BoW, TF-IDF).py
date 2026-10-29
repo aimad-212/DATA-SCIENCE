@@ -67,3 +67,19 @@ vocab = list(dict.fromkeys(
 print("Vocabulaire :", vocab)
 print("Taille du vocabulaire :", len(vocab))
 
+# =====================================================
+# 4. ONE-HOT ENCODING
+# =====================================================
+
+def one_hot_doc(tokens, vocab):
+    """
+    Retourne un vecteur binaire :
+    1 si le mot est présent, 0 sinon.
+    """
+    token_set = set(tokens)
+
+    return np.array(
+        [1 if word in token_set else 0 for word in vocab],
+        dtype=int
+    )
+
