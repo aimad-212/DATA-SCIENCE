@@ -138,3 +138,22 @@ def tfidf_doc(doc_tokens, corpus, vocab):
         vector.append(weight)
 
     return np.array(vector, dtype=float)
+
+# =====================================================
+# 9. APPLICATION AUX QUATRE DOCUMENTS
+# =====================================================
+
+one_hot_matrix = np.array([
+    one_hot_doc(tokens, vocab)
+    for tokens in tokenized_corpus
+])
+
+bow_matrix = np.array([
+    bow_doc(tokens, vocab)
+    for tokens in tokenized_corpus
+])
+
+tfidf_matrix = np.array([
+    tfidf_doc(tokens, tokenized_corpus, vocab)
+    for tokens in tokenized_corpus
+])
