@@ -116,3 +116,25 @@ def idf(term, corpus):
         return 0.0
 
     return np.log(N / df)
+
+# =====================================================
+# 8. TF-IDF
+# =====================================================
+
+def tfidf_doc(doc_tokens, corpus, vocab):
+    """
+    Calcule le vecteur TF-IDF d'un document.
+
+    TF-IDF(term, doc) = TF(term, doc) * IDF(term)
+    """
+    vector = []
+
+    for word in vocab:
+        term_frequency = tf(word, doc_tokens)
+        inverse_document_frequency = idf(word, corpus)
+
+        weight = term_frequency * inverse_document_frequency
+
+        vector.append(weight)
+
+    return np.array(vector, dtype=float)
