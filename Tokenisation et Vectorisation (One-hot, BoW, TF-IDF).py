@@ -93,3 +93,26 @@ def tf(term, tokens):
     TF = nombre d'occurrences du terme dans le document.
     """
     return tokens.count(term)
+
+
+# =====================================================
+# 7. INVERSE DOCUMENT FREQUENCY (IDF)
+# =====================================================
+
+def idf(term, corpus):
+    """
+    IDF = ln(N / DF)
+    N  : nombre total de documents
+    DF : nombre de documents contenant le terme
+    """
+    N = len(corpus)
+
+    df = sum(
+        1 for tokens in corpus
+        if term in set(tokens)
+    )
+
+    if df == 0:
+        return 0.0
+
+    return np.log(N / df)
