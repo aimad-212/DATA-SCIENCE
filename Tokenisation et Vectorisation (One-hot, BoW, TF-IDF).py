@@ -157,3 +157,41 @@ tfidf_matrix = np.array([
     tfidf_doc(tokens, tokenized_corpus, vocab)
     for tokens in tokenized_corpus
 ])
+
+
+# =====================================================
+# 10. AFFICHAGE DES TABLEAUX
+# =====================================================
+
+document_names = ["Doc1", "Doc2", "Doc3", "Doc4"]
+
+
+def display_matrix(title, matrix):
+    print("\n" + "=" * 70)
+    print(title)
+    print("=" * 70)
+
+    print(f"{'Mot':<18}", end="")
+
+    for name in document_names:
+        print(f"{name:>12}", end="")
+
+    print()
+
+    for j, word in enumerate(vocab):
+        print(f"{word:<18}", end="")
+
+        for i in range(len(corpus)):
+            value = matrix[i, j]
+
+            if title == "TF-IDF":
+                print(f"{value:>12.4f}", end="")
+            else:
+                print(f"{int(value):>12}", end="")
+
+        print()
+
+
+display_matrix("ONE-HOT ENCODING", one_hot_matrix)
+display_matrix("BAG OF WORDS", bow_matrix)
+display_matrix("TF-IDF", tfidf_matrix)
