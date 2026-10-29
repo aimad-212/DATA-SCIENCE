@@ -195,3 +195,48 @@ def display_matrix(title, matrix):
 display_matrix("ONE-HOT ENCODING", one_hot_matrix)
 display_matrix("BAG OF WORDS", bow_matrix)
 display_matrix("TF-IDF", tfidf_matrix)
+
+# =====================================================
+# 11. TEST SUR DOC1
+# =====================================================
+
+tokens_doc1 = tokenized_corpus[0]
+
+one_hot_doc1 = one_hot_doc(tokens_doc1, vocab)
+bow_doc1 = bow_doc(tokens_doc1, vocab)
+tfidf_doc1 = tfidf_doc(
+    tokens_doc1,
+    tokenized_corpus,
+    vocab
+)
+
+print("\n========== RESULTATS DOC1 ==========")
+
+print("Tokens :", len(tokens_doc1))
+print("Vocabulaire :", len(vocab))
+
+print("\nOne-hot Doc1 :")
+print(one_hot_doc1)
+
+print("\nBoW Doc1 :")
+print(bow_doc1)
+
+print("\nTF-IDF Doc1 :")
+print(np.round(tfidf_doc1, 4))
+
+
+# =====================================================
+# 12. VERIFICATIONS
+# =====================================================
+
+assert len(vocab) == 65
+
+assert np.sum(bow_doc1) == len(tokens_doc1)
+
+assert np.sum(one_hot_doc1) == len(set(tokens_doc1))
+
+assert np.all(one_hot_matrix >= 0)
+assert np.all(bow_matrix >= 0)
+assert np.all(tfidf_matrix >= 0)
+
+print("\nToutes les vérifications sont réussies.")
