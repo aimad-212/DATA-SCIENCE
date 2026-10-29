@@ -53,3 +53,17 @@ for i, tokens in enumerate(tokenized_corpus, start=1):
     print("Nombre de tokens :", len(tokens))
     print()
 
+# =====================================================
+# 3. CONSTRUCTION DU VOCABULAIRE
+# =====================================================
+
+# On conserve l'ordre de première apparition.
+vocab = list(dict.fromkeys(
+    token
+    for tokens in tokenized_corpus
+    for token in tokens
+))
+
+print("Vocabulaire :", vocab)
+print("Taille du vocabulaire :", len(vocab))
+
